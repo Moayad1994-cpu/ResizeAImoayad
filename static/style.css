@@ -1,0 +1,109 @@
+        /* styles.css */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Styles */
+body {
+    @apply transition-colors duration-300; /* Smooth theme transition */
+}
+
+/* Style for slider thumbs */
+.slider-thumb::-webkit-slider-thumb {
+    @apply w-5 h-5 bg-indigo-600 rounded-full cursor-pointer appearance-none disabled:bg-gray-400;
+    margin-top: -6px; /* Adjust vertical alignment */
+}
+.dark .slider-thumb::-webkit-slider-thumb {
+    @apply bg-indigo-400 dark:disabled:bg-gray-500;
+}
+
+.slider-thumb::-moz-range-thumb {
+    @apply w-5 h-5 bg-indigo-600 rounded-full cursor-pointer border-none disabled:bg-gray-400;
+}
+.dark .slider-thumb::-moz-range-thumb {
+    @apply bg-indigo-400 dark:disabled:bg-gray-500;
+}
+
+/* Active/Inactive state for format buttons */
+.format-btn {
+    @apply bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.format-btn.active {
+     @apply bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 ring-2 ring-indigo-500 dark:ring-indigo-400;
+}
+/* Ensure disabled active button looks disabled */
+.format-btn.active:disabled {
+    @apply bg-gray-100 dark:bg-gray-700 text-gray-400 dark:text-gray-500 ring-1 ring-gray-400 dark:ring-gray-600;
+}
+
+
+/* Image Thumbnail Styling */
+.image-thumbnail-container {
+    @apply relative border border-gray-200 dark:border-gray-700 rounded-lg p-2 bg-gray-50 dark:bg-gray-700/50 shadow-sm transition-all duration-200 hover:shadow-md cursor-pointer flex flex-col; /* Make it flex column */
+    aspect-ratio: 1 / 1; /* Ensure square aspect ratio */
+}
+
+.image-thumbnail-container img {
+    @apply w-full h-auto object-contain rounded flex-grow mb-1; /* Image takes available space */
+}
+
+/* Styles for controls within the thumbnail */
+.image-filename {
+     @apply text-xs truncate text-center mt-1 text-gray-600 dark:text-gray-400 block w-full; /* Ensure it takes width */
+     line-height: 1.2;
+     max-height: 2.4em; /* Limit to two lines approx */
+     overflow: hidden;
+}
+
+.image-size-info {
+    @apply text-[10px] text-center text-gray-500 dark:text-gray-500 block w-full;
+}
+
+.download-individual-btn {
+    @apply absolute top-1 right-1 bg-green-600 hover:bg-green-700 text-white text-xs p-1 rounded-full w-6 h-6 flex items-center justify-center shadow disabled:opacity-50 disabled:bg-gray-400 dark:disabled:bg-gray-600 cursor-pointer disabled:cursor-not-allowed;
+    z-index: 5; /* Above overlay */
+}
+
+/* Processing feedback */
+.processing-spinner {
+     @apply w-8 h-8 border-4 border-t-indigo-500 dark:border-t-indigo-400 border-r-transparent border-b-transparent border-l-transparent rounded-full animate-spin;
+}
+.thumbnail-status-border-processing { @apply border-blue-500 dark:border-blue-400 ring-1 ring-blue-500 dark:ring-blue-400; }
+.thumbnail-status-border-done { @apply border-green-500 dark:border-green-400; }
+.thumbnail-status-border-error { @apply border-red-500 dark:border-red-400; }
+
+
+/* Button loading state */
+.button-loading .spinner {
+    display: inline-block; /* Show spinner when loading class is present */
+}
+.button-loading .button-text {
+    opacity: 0.7; /* Slightly dim text when loading */
+}
+/* From Uiverse.io by xXJollyHAKERXx */
+.spinner {
+  background-image: linear-gradient(rgb(186, 66, 255) 35%,rgb(0, 225, 255));
+  width: 100px;
+  height: 100px;
+  animation: spinning82341 1.7s linear infinite;
+  text-align: center;
+  border-radius: 50px;
+  filter: blur(1px);
+  box-shadow: 0px -5px 20px 0px rgb(186, 66, 255), 0px 5px 20px 0px rgb(0, 225, 255);
+}
+
+.spinner1 {
+  background-color: rgb(36, 36, 36);
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  filter: blur(10px);
+}
+
+@keyframes spinning82341 {
+  to {
+    transform: rotate(360deg);
+  }
+}
